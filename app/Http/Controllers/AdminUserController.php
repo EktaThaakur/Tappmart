@@ -17,6 +17,9 @@ class AdminUserController extends Controller
     {
         return view('layouts.new_admin_user');
     }
+
+    // Note: Register user in "RegisteredUserController" Function name= store.
+
     // public function create_admin_user(Request $request)
     // {
     //     $validate = $request->validate([

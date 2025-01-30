@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\MasterPincode;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -33,6 +34,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'pincodes' => ['required', 'string'],
         ]);
 
         $user = User::create([
@@ -40,6 +42,15 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        // Convert comma-separated pincodes to an array and remove empty spaces
+        $pincodeArray = array_map('trim', explode(',', $request->pincodes));
+        // Fetch valid pincode IDs from the database
+        $validPincodeIds = MasterPincode::whereIn('pincodes', $pincodeArray)->pluck('id')->toArray();
+        // Attach multiple pincodes to the user
+        if (!empty($validPincodeIds)) {
+            $user->pincodes()->attach($validPincodeIds);
+        }
 
         event(new Registered($user));
 

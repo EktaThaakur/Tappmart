@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('password')->nullable(); // Make password nullable for social login
             $table->string('provider')->nullable(); // Add provider column for social login
             $table->string('provider_id')->nullable(); // Add provider_id column for social login
-            // $table->string('password');
+            $table->string('role')->nullable();
+            // $table->string('category')->nullable();
+            // $table->string('pincode')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

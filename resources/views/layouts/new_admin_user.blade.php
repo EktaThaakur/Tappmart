@@ -61,6 +61,10 @@
                                 <label for="name"> Confirm Password</label>
                                 <input type="text" class="form-control" id="confirm_password" name="password_confirmation" placeholder="Confirm Password">
                             </div>
+                            <div class="form-group">
+                                <label for="pincode">Pincode</label>
+                                <textarea class="form-control" id="pincode" name="pincodes" rows="3" placeholder="Enter Pincode"></textarea>
+                            </div>
                         </div>
 
                         <div class="card-footer">

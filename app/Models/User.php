@@ -14,6 +14,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Product::class, 'pincode__products', 'pincode_id', 'product_id')
             ->withPivot('pincode_id');
     }
+    public function pincodes()
+    {
+        return $this->belongsToMany(MasterPincode::class, 'users_pincodes', 'user_id', 'pincode_id');
+    }
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -28,6 +32,8 @@ class User extends Authenticatable
         'password',
         'provider',
         'provider_id',
+        'category_id',
+
     ];
 
     /**
