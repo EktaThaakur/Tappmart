@@ -73,34 +73,39 @@ $data = \App\Models\product::get();
                             </thead>
                             <tbody>
                                 @foreach ($product_variants as $product_variant)
-                                <tr>
-                                    <td>{{ $product_variant['id'] }}</td>
-                                    <td>{{ $product_variant['name'] }}</td>
-                                    <td>{{ $product_variant['premium'] }}</td>
-                                    <td>{{ $product_variant['commission'] }}</td>
-                                    <td>{{ $product_variant->product->name }}</td>
-                                    <td>{{ $product_variant['suminsured'] }}</td>
-                                    <td>{{ $product_variant['grosspremium'] }}</td>
-                                    @if($product_variant->product->id == 2)
-                                    <td></td>
-                                    <td></td>
-                                    @else
-                                    <td>{{ $product_variant['moneyinsafe'] }}</td>
-                                    <td>{{ $product_variant['neonsign'] }}</td>
-                                    @endif
-                                    <td>{{ $product_variant['totalcontent'] }}</td>
-                                    <td> @if($product_variant['image'] )
-                                        <img src="{{$product_variant['image'] }}" width=" 60" alt="img">
+                                    <tr>
+                                        <td>{{ $product_variant['id'] }}</td>
+                                        <td>{{ $product_variant['name'] }}</td>
+                                        <td>{{ $product_variant['premium'] }}</td>
+                                        <td>{{ $product_variant['commission'] }}</td>
+                                        <td>{{ isset($product_variant->product->name) ? $product_variant->product->name : '' }}
+                                        </td>
+                                        <td>{{ $product_variant['suminsured'] }}</td>
+                                        <td>{{ $product_variant['grosspremium'] }}</td>
+                                        @if ($product_variant->product->id == 2)
+                                            <td></td>
+                                            <td></td>
                                         @else
-                                        <img src="/dist/img/user1-128x128.jpg" width=" 60" alt="img">
+                                            <td>{{ $product_variant['moneyinsafe'] }}</td>
+                                            <td>{{ $product_variant['neonsign'] }}</td>
                                         @endif
-                                    </td>
-                                    <td class="text-center"><a class="btn btn-primary btn-sm" href="/edit_product_variantForm/{{ $product_variant['id'] }}">
-                                            Update</a>
-                                        <a class=" btn btn-danger btn-sm" href="/delete_product_variant/{{ $product_variant['id'] }}">Delete</a>
-                                    </td>
+                                        <td>{{ $product_variant['totalcontent'] }}</td>
+                                        <td>
+                                            @if ($product_variant['image'])
+                                                <img src="{{ $product_variant['image'] }}" width=" 60"
+                                                    alt="img">
+                                            @else
+                                                <img src="/dist/img/user1-128x128.jpg" width=" 60" alt="img">
+                                            @endif
+                                        </td>
+                                        <td class="text-center"><a class="btn btn-primary btn-sm"
+                                                href="/edit_product_variantForm/{{ $product_variant['id'] }}">
+                                                Update</a>
+                                            <a class=" btn btn-danger btn-sm"
+                                                href="/delete_product_variant/{{ $product_variant['id'] }}">Delete</a>
+                                        </td>
 
-                                </tr>
+                                    </tr>
                                 @endforeach
                             </tbody>
 

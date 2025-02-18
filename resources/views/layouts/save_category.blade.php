@@ -25,6 +25,28 @@
                     <div class="card-header">
                         <h3 class="card-title">Add New Category</h3>
                     </div>
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+                    <form action="/cat_bulk_data" method="POST" enctype="multipart/form-data">
+
+                        @csrf
+                        <div class="form-group pt-2 pl-3 pr-3">
+                            <label for="bulk_register">Upload Category</label>
+                            <input type="file" class="form-control" id="bulkuser" name="file">
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </div>
+                    </form>
 
                     <form action="/category_data" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -33,7 +55,8 @@
 
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                                <input type="text" class="form-control" id="name" name="name"
+                                    placeholder="Name">
                             </div>
                             <div class="form-group">
                                 <label for="image">Image</label>

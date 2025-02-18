@@ -18,30 +18,25 @@
                                             <th>ID</th>
                                             <th>Product</th>
                                             <th>Created Date</th>
-                                            <th>Action</th>
+                                            <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
 
-                                        use App\Models\Policy;
-
-                                        $policies = Policy::latest()->get();
-                                        ?>
                                         @foreach ($policies as $policy)
-                                        <tr>
-                                            <td>{{ $policy['id'] }}</td>
-                                            <td>{{ $policy['product'] }}</td>
-                                            <td>{{ $policy['created_at'] }}</td>
-                                            <td class="text-center">
-                                                <a class="btn btn-primary btn-sm"
-                                                    href="/policy_edit/{{ $policy['id'] }}">Edit</a>
-                                                <a class="btn btn-danger btn-sm"
-                                                    href="/policy/{{ $policy['id'] }}">View</a>
-                                                <a class="btn btn-danger btn-sm"
-                                                    href="/policy_delete/{{ $policy['id'] }}">Delete</a>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td>{{ $policy['id'] }}</td>
+                                                <td>{{ $policy['product'] }}</td>
+                                                <td>{{ $policy['created_at'] }}</td>
+                                                <td class="text-center">
+                                                    <a class="btn btn-primary btn-sm"
+                                                        href="/policy_edit/{{ $policy['id'] }}">Edit</a>
+                                                    <a class="btn btn-danger btn-sm"
+                                                        href="/policy/{{ $policy['id'] }}">View</a>
+                                                    <a class="btn btn-danger btn-sm"
+                                                        href="/policy_delete/{{ $policy['id'] }}">Delete</a>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>

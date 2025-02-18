@@ -51,6 +51,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Pincodes</th>
+                                    <th>City</th>
+                                    <th>State</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -59,6 +61,8 @@
                                 <tr>
                                     <td>{{ $pincode->id }}</td>
                                     <td>{{ $pincode->pincodes }}</td>
+                                    <td>{{ $pincode->cities->name }}</td>
+                                    <td>{{ $pincode->cities->state->name }}</td>
                                     <td class="text-center">
                                         <a class="btn btn-primary btn-sm" href="/edit_pincodeForm/{{$pincode->id}}">Update</a>
                                         <a class="btn btn-danger btn-sm" href="/delete_pincode/{{$pincode->id}}">Delete</a>

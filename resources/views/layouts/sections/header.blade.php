@@ -6,13 +6,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title>TappMart | Dashboard</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="/plugins/code.ionicframework.com/ionicons/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
@@ -29,6 +31,9 @@
     <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="/css/style2.css">
+
+
     <script data-cfasync="false" nonce="21d590da-6d5e-4055-a15d-b9b68af7bfdc">
         try {
             (function(w, d) {
@@ -128,6 +133,7 @@
             throw fetch("/cdn-cgi/zaraz/t"), e;
         };
     </script>
+
     <!-- Include CKEditor -->
     <script src="https://cdn.ckeditor.com/4.21.0/full/ckeditor.js"></script>
     <style>
@@ -177,10 +183,11 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                            class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
@@ -308,7 +315,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">
-                        <i class="fas fa-th-large"></i>
+                        <i class="fa-solid fa-power-off" style="color: red"></i>
                     </a>
                 </li>
             </ul>

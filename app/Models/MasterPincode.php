@@ -26,4 +26,9 @@ class MasterPincode extends Model
 
         return $this->belongsToMany(User::class, 'users_pincodes', 'pincode_id', 'user_id');
     }
+
+    public function category()
+    {
+        return $this->belongsToMany(Category::class, 'pincode__categories', 'pincode_id', 'category_id');
+    }
 }

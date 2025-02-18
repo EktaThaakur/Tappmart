@@ -11,17 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('all_users', function (Blueprint $table) {
+        Schema::create('form_names', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('address');
-            
-            $table->string('password');
-            $table->string('Category');
-            $table->string('pincode');
-            $table->string('status');
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('all_users');
+        Schema::dropIfExists('form_names');
     }
 };

@@ -12,4 +12,14 @@ class category extends Model
     {
         return $this->hasMany(Product::class);
     } //
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'category_users', 'category_id', 'user_id');
+    }
+
+    public function pincodes()
+    {
+        return $this->belongsToMany(MasterPincode::class, 'pincode__categories', 'category_id', 'pincode_id');
+    }
 }

@@ -19,6 +19,9 @@ return new class extends Migration
             $table->text('about');
             $table->timestamps();
         });
+        Schema::table('product_variants', function (Blueprint $table) {
+            $table->foreignId('policy_id')->nullable()->constrained('policies')->onDelete('cascade');
+        });
     }
 
     /**

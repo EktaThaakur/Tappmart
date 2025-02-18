@@ -1,0 +1,80 @@
+ /* .fa-solid:before {
+     color: #002196 !important;
+ } */
+
+ /* .fas:before {
+     color: #002196 !important;
+ } */
+
+ a:hover {
+     color: #bb44c4 !important;
+ }
+
+
+
+ .editor-form {
+     background: #fff;
+     padding: 20px;
+     border-radius: 8px;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     max-width: 1116px;
+     margin: auto;
+ }
+
+ .dynamic-label {
+     font-weight: bold;
+     margin-top: 10px;
+     display: inline-block;
+ }
+
+ select,
+ .ckeditor,
+ .button-editor {
+     display: block;
+     width: 100%;
+     margin: 10px 0;
+     padding: 10px;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+     font-size: 16px;
+ }
+
+ .button-editor {
+     background-color: #4CAF50;
+     color: white;
+     border: none;
+     cursor: pointer;
+ }
+
+ .button-editor:hover {
+     background-color: #45a049;
+ }
+
+ .form-control:focus {
+     border-color: #bb44c4 !important;
+ }
+
+ .form-control {
+     border-color: darkblue !important;
+ }
+
+ /* option {
+     background-color: #002196 !important;
+     color: #fff !important;
+ } */
+
+ .fas:before {
+     color: darkblue;
+ }
+
+ .fa-solid:before {
+     color: red;
+ }
+
+ .far:before {
+     color: darkblue;
+ }
+
+ .main-sidebar {
+     background-color: white;
+ }

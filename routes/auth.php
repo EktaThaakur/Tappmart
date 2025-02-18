@@ -22,6 +22,10 @@ Route::middleware('guest')->group(function () {
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
+    // using csv import user
+    Route::post('import', [RegisteredUserController::class, 'importUser'])->name('import');
+
+
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');
 
@@ -35,7 +39,7 @@ Route::middleware('guest')->group(function () {
         ->name('password.store');
 });
 Route::post('register', [RegisteredUserController::class, 'store']);
-
+// Route::post('/bulk_register', [RegisteredUserController::class, 'bulk_register']);
 Route::middleware('auth')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');

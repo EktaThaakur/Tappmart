@@ -8,11 +8,11 @@
 
         <select name="product" id="product">
             @foreach ($products as $product)
-            <option value="{{$product->name}}">{{$product->name}}</option>
-
+                <option value="{{ $product->id }}">{{ $product->name }}</option>
+            @endforeach
 
         </select>
-        @endforeach
+
 
         <label for="content">Content:</label>
         foreach ($policies as $policy)

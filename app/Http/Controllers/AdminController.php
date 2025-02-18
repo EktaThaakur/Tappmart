@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\CatImport;
 use App\Models\category;
 use App\Models\product;
 use App\Models\product_variant;
@@ -9,6 +10,7 @@ use App\Models\ProductVariant;
 use App\ModelsModels\category as ModelsModelsCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
@@ -21,6 +23,7 @@ class AdminController extends Controller
     {
         return view('layouts.Category');
     }
+
 
     public function category_data(Request $request)
     {
@@ -53,6 +56,15 @@ class AdminController extends Controller
         return redirect()->route('category_view')
             ->with('success', 'Category created successfully!');
     }
+    public function cat_bulk_data(Request $request)
+    {
+        // dd($request->all());
+        Excel::import(new CatImport, $request->file('file'));
+
+        return back()->with('success', 'Data imported successfully!');
+    }
+
+
     public function show_data(Request $request)
     {
         $categories = category::all()->toArray();
@@ -133,7 +145,7 @@ class AdminController extends Controller
         $product = product::find($id);
         $categories = category::latest()->get();
         return view('layouts.edit_productForm', compact('product', 'categories'));
-    }
+    } 
     public function update_product(Request $request, $id)
     {
         // dd($request->description);
@@ -157,14 +169,14 @@ class AdminController extends Controller
     {
         // dd($request->all());
         $validated = $request->validate([
-            'name' => 'nullable|string',
-            'premium' => 'nullable|integer',
-            'commission' => 'nullable|integer',
-            'suminsured' => 'nullable|integer',
-            'grosspremium' => 'nullable|integer',
-            'moneyinsafe' => 'nullable|integer',
-            'neonsign' => 'nullable|integer',
-            'totalcontent' => 'nullable|integer',
+            'name' => 'nullable|string|required',
+            'premium' => 'nullable|integer|required',
+            'commission' => 'nullable|integer|required',
+            'suminsured' => 'nullable|integer|required',
+            'grosspremium' => 'nullable|integer|required',
+            'moneyinsafe' => 'nullable|integer|required',
+            'neonsign' => 'nullable|integer|required',
+            'totalcontent' => 'nullable|integer|required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
 
         ]);

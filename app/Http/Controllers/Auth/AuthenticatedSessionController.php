@@ -30,6 +30,8 @@ class AuthenticatedSessionController extends Controller
 
         return redirect()->intended(route('dashboard', absolute: false));
     }
+    //for api
+  
 
     /**
      * Destroy an authenticated session.

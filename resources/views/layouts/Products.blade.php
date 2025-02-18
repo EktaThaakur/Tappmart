@@ -60,28 +60,31 @@
                             </thead>
                             <tbody>
                                 @foreach ($products as $product)
-                                <tr>
+                                    <tr>
 
-                                    <td>{{ $product['id'] }}</td>
-                                    <td>{{ $product->category_id }}</td>
-                                    <td>{{ $product['name'] }}</td>
-                                    <td>{{ $product['description'] }}</td>
+                                        <td>{{ $product['id'] }}</td>
+                                        <td>{{ $product->category->name }}</td>
+                                        <td>{{ $product['name'] }}</td>
+                                        <td>{{ $product['description'] }}</td>
 
-                                    <td>
-                                        @if($product->category->image)
-                                        <img src="{{$product->category->image }}" width=" 60" alt="img">
-                                        @else
-                                        <img src="/dist/img/user1-128x128.jpg" width=" 60" alt="img">
-                                        @endif
-                                    </td>
-                                    <td>{{ $product['tappoint_percentage'] }}</td>
+                                        <td>
+                                            @if ($product->category->image)
+                                                <img src="{{ $product->category->image }}" width=" 60"
+                                                    alt="img">
+                                            @else
+                                                <img src="/dist/img/user1-128x128.jpg" width=" 60" alt="img">
+                                            @endif
+                                        </td>
+                                        <td>{{ $product['tappoint_percentage'] }}</td>
 
-                                    <td class="text-center"><a class="btn btn-primary btn-sm" href="/edit_productForm/{{ $product['id'] }}">
-                                            Update</a>
-                                        <a class=" btn btn-danger btn-sm" href="/delete_product/{{ $product['id'] }}">Delete</a>
-                                    </td>
+                                        <td class="text-center"><a class="btn btn-primary btn-sm"
+                                                href="/edit_productForm/{{ $product['id'] }}">
+                                                Update</a>
+                                            <a class=" btn btn-danger btn-sm"
+                                                href="/delete_product/{{ $product['id'] }}">Delete</a>
+                                        </td>
 
-                                </tr>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>

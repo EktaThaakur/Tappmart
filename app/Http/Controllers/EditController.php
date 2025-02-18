@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PolicyResources;
+use App\Http\Resources\ProductVariantResource;
 use App\Models\Policy;
 use App\Models\product;
 use App\Models\ProductVariant;
@@ -34,7 +36,7 @@ class EditController extends Controller
             'about' => $request->input('about')
         ]);
 
-
+        // dd($request->all());
         // Redirect back with a success message
         return redirect()->back()->with('success', 'Policy saved successfully!');
     }
@@ -46,7 +48,7 @@ class EditController extends Controller
     public function Policy_info() //only name of policy
     {
         $policies = Policy::latest()->get();
-        return view('layouts.Policy_info');
+        return view('layouts.Policy_info', compact('policies'));
     }
     public function delete($id)
     {
@@ -90,21 +92,26 @@ class EditController extends Controller
     public function get_policies_api() //only name of policy
     {
         $policies = Policy::latest()->get();
-        return response()->json($policies);
+        // dd($policies);
+        return PolicyResources::collection($policies);
     }
     public function show_mobile_api($id) //details of policy
     {
         $policy = Policy::find($id);
-        return response()->json($policy);
+        return new PolicyResources($policy);
     }
 
 
     public function get_variant_api($id)
     {
         //check which product is selected
-        $product = product::find($id);
-
-        $product_variants = ProductVariant::where('product_id', $product->id)->get();
-        return response()->json($product_variants);
+        $product = Policy::find($id);
+        if ($product) {
+            $product_variants = ProductVariant::where('product_id', $product->product)->get();
+            // dd($product_variants);
+            return ProductVariantResource::collection($product_variants);
+        } else {
+            return response()->json('policy not found', 404);
+        }
     }
 }

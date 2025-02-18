@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -18,8 +19,13 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(MasterPincode::class, 'users_pincodes', 'user_id', 'pincode_id');
     }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'category_users', 'user_id', 'category_id');
+    }
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -30,6 +36,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'address',
+        'IR-Code',
         'provider',
         'provider_id',
         'category_id',

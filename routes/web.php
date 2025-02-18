@@ -3,7 +3,9 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DynamicController;
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\MerchantCategory;
 use App\Http\Controllers\MerchantController;
@@ -26,12 +28,14 @@ Route::middleware('auth')->group(function () {
         Auth::logout();
         return redirect('/login');
     });
-
+    //bulk upload user
+    Route::post('/dump', [RegisteredUserController::class, 'dump']);
 
     //category rotes
     Route::get('/admin', [AdminController::class, 'admin'])->name('dashboard');
     Route::get('/category_view', [AdminController::class, 'show_data'])->name('category_view');
     Route::post('/category_data', [AdminController::class, 'category_data'])->name('category_data');
+    Route::post('/cat_bulk_data', [AdminController::class, 'cat_bulk_data'])->name('cat_bulk_data');
     Route::get('/save_category', [AdminController::class, 'save_category'])->name('save_category');
     Route::get('/update_category/{id}', [AdminController::class, 'update_category'])->name('update_category');
     Route::post('/update_category/{id}', [AdminController::class, 'update_category_post'])->name('update_category_post');
@@ -52,6 +56,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/delete_product_variant/{id}', [AdminController::class, 'delete_product_variant'])->name('delete_product_variant');
     Route::get('/edit_product_variantForm/{id}', [AdminController::class, 'edit_product_variant'])->name('edit_product_variant');
     Route::post('/update_product_variant/{id}', [AdminController::class, 'update_product_variant'])->name('update_product_variant');
+
 
     //merchant routes
     Route::get('/merchant_view', [MerchantController::class, 'merchant_view'])->name('merchant_view');
@@ -83,6 +88,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit_admin_userForm/{id}', [AdminUserController::class, 'edit_admin_user'])->name('edit_admin_user');
     Route::post('/update_admin_user/{id}', [AdminUserController::class, 'update_admin_user'])->name('update_admin_user');
     Route::get('/delete_admin_user/{id}', [AdminUserController::class, 'delete_admin_user'])->name('delete_admin_user');
+    Route::post('/bulkUserCreationWithAssignment', [AdminUserController::class, 'user'])->name('user');
 
 
     //Assignment
@@ -90,6 +96,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/user_assignment', [AssignmentController::class, 'user_assignment'])->name('user_assignment');
     Route::post('/assignPincodesToProduct', [AssignmentController::class, 'assignPincodesToProduct'])->name('assignPincodesToProduct');
     Route::get('/product_assignment', [AssignmentController::class, 'product_assignment'])->name('product_assignment');
+
+    //category assignment to pincodes
+    Route::post('/assign_category_to_pincode', [AssignmentController::class, 'assign_category_to_pincode'])->name('assign_category_to_pincode');
+    Route::get('/category_assignment', [AssignmentController::class, 'category_assignment'])->name('category_assignment');
+    Route::get('/pincode_category', [AssignmentController::class, 'pincode_category'])->name('pincode_category');
+
     //view Product Assignment
     Route::get('/assign_pincode_to_product', [AssignmentController::class, 'assign_pincode_to_product'])->name('assign_pincode_to_product');
 
@@ -119,6 +131,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/merchant_category', [MerchantCategory::class, 'merchant_category'])->name('merchant_category');
     Route::post('/create_merchant_category', [MerchantCategory::class, 'create_merchant_category'])->name('create_merchant_category');
     Route::get('/new_merchant_category', [MerchantCategory::class, 'merchant_category_new'])->name('merchant_category_new');
+
+    //Dynamic form routes
+    Route::get('/dynamic_form', [DynamicController::class, 'dynamic_form'])->name('dynamic_form');
+
+    Route::get('/form/add_fields/{id}', [DynamicController::class, 'add_fields'])->name('add_fields');
+
+    Route::post('/dynamic_form/create', [DynamicController::class, 'create'])->name('dynamic_form.create');
+
+    Route::get('/form/dynamic_form_View/{id}', [DynamicController::class, 'View'])->name('dynamic_form.View');
+    Route::get('/form/delete_fields/{id}', [DynamicController::class, 'delete_fields'])->name('delete_fields');
+    Route::post('/form_save', [DynamicController::class, 'form_save'])->name('form_save');
+    Route::get('/dynamic_varint_data', [DynamicController::class, 'form_view']);
 });
 
 // /auth/google/call-back

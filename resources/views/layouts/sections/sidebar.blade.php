@@ -1,8 +1,9 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar elevation-4">
     <!-- Brand Logo -->
     <div class=" mt-3 pb-3 mb-3 d-flex ">
         <a href="index3.html" class="brand-link">
-            <img src="/dist/img/logo_tapmart.png" alt="TappMart Logo" class="brand-image pl-1 img-circle elevation-5 " style="height: 200px; width: 200px; background-color: white;">
+            <img src="/dist/img/logo_tapmart.png" alt="TappMart Logo" class="brand-image pl-1 "
+                style="height: 200px; width: 150px; background-color: white;">
 
         </a>
     </div>
@@ -18,7 +19,8 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel  pb-1   d-flex">
             <div class="image">
-                <img src="/dist/img/avatar.png" class="img-circle elevation-2 " alt="User Image" style="width: 40px; height: 40px;">
+                <img src="/dist/img/avatar.png" class="img-circle elevation-2 " alt="User Image"
+                    style="width: 40px; height: 40px;">
                 <!-- <img src="{{ asset('storage/' . Auth::user()->image) }}" class="img-circle elevation-2" alt="User Image"> -->
             </div>
 
@@ -27,21 +29,12 @@
             </div>
         </div>
 
-        <!-- SidebarSearch Form -->
-        <!-- <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-sidebar">
-                        <i class="fas fa-search fa-fw"></i>
-                    </button>
-                </div>
-            </div>
-        </div> -->
+
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
@@ -52,27 +45,10 @@
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                    <!-- <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="index-2.html" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v1</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="index2.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v2</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="index3.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v3</p>
-                            </a>
-                        </li>
-                    </ul> -->
+
                 </li>
+
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
@@ -84,22 +60,49 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="/category_view" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class=" fas fa-caret-right nav-icon "></i>
+
                                 <p>Category</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/product_view" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class=" fas fa-caret-right nav-icon"></i>
                                 <p>Product</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/product_variant_view" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class=" fas fa-caret-right nav-icon"></i>
                                 <p>Product Variant</p>
                             </a>
                         </li>
+
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            Product Varints
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/dynamic_form" class="nav-link">
+                                <i class=" fas fa-caret-right nav-icon "></i>
+
+                                <p>Create Vraints form</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/dynamic_varint_data" class="nav-link">
+                                <i class=" fas fa-caret-right nav-icon"></i>
+                                <p>Product Varints list</p>
+                            </a>
+                        </li>
+
 
                     </ul>
                 </li>
@@ -114,25 +117,25 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="/admin_user_view" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-caret-right nav-icon"></i>
                                 <p>Admin User</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/customer_view" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class=" fas fa-caret-right nav-icon"></i>
                                 <p>Customers</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/merchant_view" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-caret-right nav-icon"></i>
                                 <p>Merchants</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/sales_person_view" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-caret-right nav-icon"></i>
                                 <p>Sales Person</p>
                             </a>
                         </li>
@@ -149,25 +152,36 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="/pincode_view" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+
+                                <i class="fas fa-caret-right nav-icon"></i>
                                 <p>Pincodes</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/assign_pincode_to_product" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+
+                                <i class="fas fa-caret-right nav-icon"></i>
                                 <p>Product Assignment</p>
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="/pincode_category" class="nav-link">
+
+                                <i class="fas fa-caret-right nav-icon"></i>
+                                <p>Category Assignment</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="/user_assignment" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+
+                                <i class="fas fa-caret-right nav-icon"></i>
                                 <p>User Assignment</p>
                             </a>
                         </li>
 
                     </ul>
                 </li>
+
                 <li class="nav-item">
                     <a href="/Policy_info" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
@@ -185,7 +199,8 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+
+                <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
@@ -777,7 +792,7 @@
                         <i class="nav-icon far fa-circle text-info"></i>
                         <p>Informational</p>
                     </a>
-                </li>
+                </li> -->
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -1,20 +1,20 @@
 @include('layouts.sections.header')
 @include('layouts.sections.sidebar')
 <div class="content-wrapper">
-    @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
     @endif
 
     @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
     @endif
 
     <form method="POST" action="{{ route('policy.store') }}" class="editor-form ">
@@ -23,7 +23,7 @@
 
         <select name="product" id="product">
             @foreach ($products as $product)
-            <option value="{{$product->name}}">{{$product->name}}</option>
+                <option value="{{ $product->id }}">{{ $product->name }}</option>
             @endforeach
         </select>
 

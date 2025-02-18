@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\category;
 use App\Models\MasterPincode;
 use App\Models\Pincode_Product;
 use Illuminate\Http\Request;
@@ -132,9 +133,44 @@ class   AssignmentController extends Controller
         $pincodes = MasterPincode::find($id);
         return view('layouts.update_pincode', compact('pincodes'));
     }
-    //
-    public function example()
+
+    public function pincode_category()  //pincode category view 
     {
-        return view('layouts.example2');
+        $categories = category::latest()->get();
+        return view('layouts.pincode_category', compact('categories'));
     }
+
+    public function category_assignment()
+    {
+
+        $categories = category::latest()->get();
+        return view('layouts.category_assignment', compact('categories'));
+    }
+
+    public function assign_category_to_pincode()
+    {
+        $category = category::findOrFail(request('category'));
+        $pincodeIdsArray = explode(',', request('pincode'));
+        $pincodes = MasterPincode::whereIn('pincodes', $pincodeIdsArray)->get();
+        $category->pincodes()->sync($pincodes->pluck('id')->toArray());
+        return redirect()->route('pincode_category')
+            ->with('success', 'Pincodes assigned to category successfully!');
+
+        // foreach ($pincodeIdsArray as $pincode) {
+        //     $p = MasterPincode::where('pincodes', $pincode)->first();
+        //     if ($p && !$category->pincodes->contains($p->id)) {
+        //         $category->pincodes()->attach($p->id);
+        //     } else {
+        //         return redirect()->route('pincode_category')
+        //             ->with('error', 'Pincodes already assigned to category!');
+        //     }
+        // }
+    }
+
+
+    //
+    // public function example()
+    // {
+    //     return view('layouts.example2');
+    // }
 }

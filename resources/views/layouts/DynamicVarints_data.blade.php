@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Admin User</h1>
+                    <h1>Product variants</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Admin User</li>
+                        <li class="breadcrumb-item active">Product variants</li>
                     </ol>
                 </div>
             </div>
@@ -22,14 +22,14 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Admin User
+                            <h3 class="card-title">variants List
 
                             </h3>
 
                             <div class="card-tools">
                                 <span style="float: left; margin-top: -5px; padding-right: 2px;">
-                                    <a href="/admin_user_new" class="btn  btn-primary btn-sm">Add
-                                        New Admin User</a>
+                                    <a href="/dynamic_form" class="btn  btn-primary btn-sm">Add
+                                        New Product variants</a>
                                 </span>
                                 <div class="input-group input-group-sm" style="width: 150px;">
                                     <input type="text" name="table_search" class="form-control float-right"
@@ -49,50 +49,31 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Email</th>
-                                    <th>Name</th>
-                                    <th>Pincodes</th>
-                                    <th>State</th>
-                                    <th>City</th>
-                                    <th>Category</th>
-                                    <th>Current Sign In At</th>
-                                    <!-- <th>Sign In Count</th> -->
-
-                                    <th>Created At</th>
+                                    <th>ID</th> <!-- ID Column -->
+                                    @foreach ($headers as $head)
+                                        <th>{{ ucfirst($head) }}</th> <!-- Headers from JSON keys -->
+                                    @endforeach
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($admin_users as $admin_user)
-                                <tr>
-                                    <td>{{$admin_user->id}}</td>
-                                    <td>{{$admin_user->email}}</td>
-                                    <td> {{$admin_user->name}}</td>
+                                @foreach ($data as $record)
+                                    <tr>
+                                        <td>{{ $record->id }}</td> <!-- Show ID -->
 
-                                    <td>@foreach($admin_user->pincodes as $pincode){{$pincode->pincodes}}, @endforeach</td>
-                                    <td>
-                                        @foreach($admin_user->pincodes as $pincode)
-                                        {{$pincode->cities->state->name}}
+                                        @foreach ($headers as $header)
+                                            <td>{{ $record->data[$header] ?? '' }}</td> <!-- Show values from JSON -->
                                         @endforeach
-                                    </td>
-                                    <td>@foreach($admin_user->pincodes as $pincode){{$pincode->cities->name}}, @endforeach </td>
-                                    <td>@foreach($admin_user->categories as $category){{$category->name}}, @endforeach</td>
-                                    <td></td>
-                                    <td>{{$admin_user->created_at}}</td>
-                                    <td class="text-center">
-                                        <a class=" btn btn-danger btn-sm" href="">View</a>
-                                        <a class="btn btn-primary btn-sm" href="/edit_admin_userForm/{{ $admin_user['id'] }}">
-                                            Update</a>
-                                        <a class=" btn btn-danger btn-sm" href="/delete_admin_user/{{ $admin_user['id'] }}">Delete</a>
 
-                                    </td>
-
-                                </tr>
+                                        <td class="text-center">
+                                            <a href="#" class="btn btn-sm btn-primary">Edit</a>
+                                            <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
-
                         </table>
+
                     </div>
                     <!-- /.card-body -->
                 </div>
